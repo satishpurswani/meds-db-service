@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.poc.dbserver.model.Medication;
 import com.poc.dbserver.service.IMedicationService;
-import com.poc.dbserver.service.meds.repo.MedicationRepository;
+import com.poc.dbserver.service.meds.repo.IMedicationRepository;
 
 @Service
 public class MedicationService implements IMedicationService{
 	
 	@Autowired
-	private MedicationRepository iMedicationRepository;
+	private IMedicationRepository iMedicationRepository;
 	
 	@PostConstruct
 	public void testDataInset() {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.poc.dbserver.model.Medication;
 
 @Repository
-public interface MedicationRepository extends JpaRepository<Medication, Long>{
+public interface IMedicationRepository extends JpaRepository<Medication, Long>{
 
 	List<Medication> findMedicationByName(String name);
 
