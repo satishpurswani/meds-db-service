@@ -1,18 +1,13 @@
 package com.poc.dbserver.service.impl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.ToLongFunction;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,10 +40,6 @@ public class PatientMedicationDetails {
 	}
 
 	public List<MedsPatient> getPatientInformation(List<MedsPatient> medsPatient) {
-		List<Long> patientmeds = new ArrayList<>();
-		for(MedsPatient mp : medsPatient) {
-			patientmeds.add(mp.getPatientId());
-		}
-		return iMedsPatientsRepository.findByPatientIdIn(patientmeds);
+		return iMedsPatientsRepository.findByPatientIdIn(medsPatient.stream().map( t -> t.getPatientId()).collect(Collectors.toList()));
 	}
 }
