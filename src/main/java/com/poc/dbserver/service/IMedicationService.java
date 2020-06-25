@@ -18,5 +18,7 @@ public interface IMedicationService {
 	boolean updateMedication(Long id, Medication medsDetails);
 
 	List<Medication> searchMedicationByIdAndNameAndAgeAndGenderAndAccessionNumberAndDOB(Medication medsDetails);
+	
+	public boolean isMedicineAvailable(List<Medication> medsDetails);
 
 }

@@ -47,6 +47,9 @@ public class MedicationDataController implements IMedicationDataController{
 
 	public List<Medication> searchPatient(@RequestBody Medication medsDetails){
 		return (medsDetails==null) ?  null :  imedicationService.searchMedicationByIdAndNameAndAgeAndGenderAndAccessionNumberAndDOB(medsDetails);
-	  }
-	
+	}
+
+	public boolean checkMedicineAvailability(@RequestBody List<Medication> medsDetails) {
+		return imedicationService.isMedicineAvailable(medsDetails);
+	}
 }

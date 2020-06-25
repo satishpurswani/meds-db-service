@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
@@ -45,6 +46,13 @@ public class MedicationService implements IMedicationService{
 	@Override
 	public Optional<Medication> getByMedicineId(Long id) {
 		return iMedicationRepository.findById(id);
+	}
+	
+	@Override
+	public boolean isMedicineAvailable(List<Medication> medsDetails) {
+		List<Long> medids = medsDetails.stream().map(t->t.getId()).sorted().collect(Collectors.toList());
+		List<Long> reponseids=iMedicationRepository.findAllById(medids).stream().map(t->t.getId()).sorted().collect(Collectors.toList());
+		return medids.equals(reponseids)? true: false;
 	}
 
 	@Override

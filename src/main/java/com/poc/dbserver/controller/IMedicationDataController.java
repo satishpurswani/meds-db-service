@@ -31,4 +31,7 @@ public interface IMedicationDataController {
 
 	@GetMapping("/search") 
 	public List<Medication> searchPatient(@RequestBody Medication medsDetails);
+	
+	@GetMapping("/checkMedicineAvailability")
+	public boolean checkMedicineAvailability(@RequestBody List<Medication> medsDetails);
 }
