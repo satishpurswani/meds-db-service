@@ -87,7 +87,7 @@ public class PatientMedicationDetails implements IPatientMedicationService{
 			}
 			entity = new HttpEntity<>(composedJson, headers);
 			LOGGER.info(">>>>>>>>>>>>> BODY : {}, Headers {} ", entity.getBody(), entity.getHeaders());
-			ResponseEntity<?> response = restTemplate.exchange("http://localhost:8081/patient/checkPatientAvailability",
+			ResponseEntity<?> response = restTemplate.exchange("http://patient-db-server/patient/checkPatientAvailability",
 					HttpMethod.POST, entity, String.class);
 			LOGGER.info(">>>>>>>>>>>>>>>>>>>>>>> response {}", response.getBody());
 			if (response.getStatusCode().equals(HttpStatus.OK)
