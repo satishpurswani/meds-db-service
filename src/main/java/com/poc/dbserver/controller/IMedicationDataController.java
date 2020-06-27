@@ -2,7 +2,6 @@ package com.poc.dbserver.controller;
 
 import java.util.List;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,23 +14,26 @@ import com.poc.dbserver.model.Medication;
 public interface IMedicationDataController {
 
 	@PostMapping("/add")
-	public boolean savePatientData(@RequestBody Medication medsDetails);
+	boolean savePatientData(@RequestBody Medication medsDetails);
 
-	@PostMapping("/addMeds/")
-	public List<Medication> saveAllPatients(@RequestBody List<Medication> medsDetails);
+	@PostMapping("/addMeds")
+	List<Medication> saveAllMedicines(@RequestBody List<Medication> medsDetails);
 
 	@GetMapping("/{medicationId}")
-	public Medication getPatientDetails(@PathVariable("medicationId") Long id) ;
+	Medication getPatientDetails(@PathVariable("medicationId") Long id) ;
 
 	@DeleteMapping("/remove/{medicineId}")
-	public void removePatientDetails(@PathVariable("medicineId") Long id);
+	void removePatientDetails(@PathVariable("medicineId") Long id);
 
 	@PutMapping("/update/{medicineId}")
-	public boolean updateExistingPatient(@PathVariable("medicineId") Long id, @RequestBody Medication medsDetails) ;
+	boolean updateExistingPatient(@PathVariable("medicineId") Long id, @RequestBody Medication medsDetails) ;
 
 	@GetMapping("/search") 
-	public List<Medication> searchPatient(@RequestBody Medication medsDetails);
+	List<Medication> searchPatient(@RequestBody Medication medsDetails);
 	
 	@PostMapping("/checkMedicineAvailability")
-	public boolean checkMedicineAvailability(@RequestBody List<Medication> medsDetails);
+	boolean checkMedicineAvailability(@RequestBody List<Medication> medsDetails);
+	
+	@PostMapping("/MedsInfo")
+	List<Medication> fetchMedicinesInformation(@RequestBody List<Medication> medsDetails);
 }

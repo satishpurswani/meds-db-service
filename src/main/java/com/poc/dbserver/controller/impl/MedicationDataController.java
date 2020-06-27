@@ -25,7 +25,7 @@ public class MedicationDataController implements IMedicationDataController{
 		return status;
 	}
 
-	public List<Medication> saveAllPatients(@RequestBody List<Medication> medsDetails) {
+	public List<Medication> saveAllMedicines(@RequestBody List<Medication> medsDetails) {
 		return imedicationService.saveAll(medsDetails);
 	}
 
@@ -51,5 +51,9 @@ public class MedicationDataController implements IMedicationDataController{
 
 	public boolean checkMedicineAvailability(@RequestBody List<Medication> medsDetails) {
 		return imedicationService.isMedicineAvailable(medsDetails);
+	}
+	
+	public List<Medication> fetchMedicinesInformation(@RequestBody List<Medication> medsDetails){
+		return (medsDetails==null) ? null : imedicationService.getMedicinesInformation(medsDetails);
 	}
 }

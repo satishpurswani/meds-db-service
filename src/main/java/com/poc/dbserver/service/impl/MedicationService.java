@@ -87,6 +87,11 @@ public class MedicationService implements IMedicationService{
 		}
 		return null;
 	}
+
+	@Override
+	public List<Medication> getMedicinesInformation(List<Medication> medsDetails) {
+		return iMedicationRepository.findAllById(medsDetails.stream().mapToLong(m->m.getId()).boxed().collect(Collectors.toList()));
+	}
 	
 
 }

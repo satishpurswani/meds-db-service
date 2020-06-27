@@ -21,4 +21,6 @@ public interface IMedicationService {
 	
 	public boolean isMedicineAvailable(List<Medication> medsDetails);
 
+	List<Medication> getMedicinesInformation(List<Medication> medsDetails);
+
 }
